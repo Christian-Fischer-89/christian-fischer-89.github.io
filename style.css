@@ -151,6 +151,7 @@ nav ul {
     padding: 0;
     margin-bottom: -1em;
     display: flex;
+    flex-direction: column;
     justify-content: center;
 }
 
@@ -251,12 +252,13 @@ footer {
 
 /* media queries */
 
-@media (min-width: 601px) {
+@media (min-width: 675px) {
     .container-flex {
         flex-direction: row;
     }
     nav ul {
         margin: auto;
+        flex-direction: row;
     }
     main {
         width: 70%;
