@@ -1,0 +1,199 @@
+/* fonts */
+
+/* variables */
+
+:root {
+    --bg-color: white;
+    --font-color: black;
+}
+
+/* keyframes */
+
+@keyframes zoom {
+    from {transform: translate(-50%, -50%) scale(0)} 
+    to {transform: translate(-50%, -50%) scale(1)}
+  }
+
+/* tags */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-size: 1.125rem;
+    background-color: var(--bg-color);
+    color: var(--font-color);
+    overflow-x: hidden;
+    font-size: 1.125rem;
+}
+
+header,
+footer {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+a {
+    text-decoration: none;
+    width: fit-content;
+    cursor: pointer;
+    color: var(--bg-color);
+}
+
+a::after {
+    display: block;
+    content: "";
+    border-bottom: 0.15em solid var(--bg-color);
+    transform: scaleX(0);
+    transition: transform 250ms ease-out;
+    transform-origin: 0% 50%;
+}
+
+a:hover:after {
+    transform: scaleX(1);
+}
+
+button {
+    font: inherit;
+    color: var(--bg-color);
+    border-style: solid;
+    border-color: var(--bg-color);
+    border-radius: 100vw;
+    background-color: transparent;
+    padding: 0.5em 1em;
+    cursor: pointer;
+    transition: 500ms;
+}
+
+button:hover {
+    color: var(--font-color);
+    background-color: var(--bg-color);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+form > input {
+    margin: 1em;
+    font-size: 1rem;
+    outline: none;
+    border-style: solid;
+    border-color: var(--bg-color);
+    border-radius: 100vw;
+    background-color: transparent;
+    padding: 0.5em 1em;
+    color: var(--bg-color);
+}
+
+form > input[type="submit"] {
+    width: fit-content;
+    font-family: inherit;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 500ms;
+}
+
+form > input[type="submit"]:hover {
+    background-color: var(--bg-color);
+    color: var(--font-color);
+}
+
+table {
+    width: 100%;
+}
+
+tr {
+    transition: 500ms;
+    margin: 1em auto;
+    clip-path: xywh(0 0 100% 100% round 100vw);
+}
+
+tr:hover {
+    background-color: var(--font-color);
+    color: var(--bg-color);
+}
+
+/* classes */
+
+.container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.gallery-img {
+    width: 100%;
+    border-radius: 0.5em;
+    margin-bottom: 0.5em;
+    transition: 500ms;
+    cursor: pointer;
+}
+
+.images img:hover {
+    opacity: 0.75;
+    filter: grayscale(15%);
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: var(--font-color);
+}
+
+.modal-content {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: auto;
+    width: clamp(20em, 90%, 20em);
+    background-color: var(--font-color);
+    border-radius: 0.5em;
+    color: var(--bg-color);
+    animation: zoom 500ms;
+}
+
+/* media query mobile */
+
+.container {
+    flex-direction: column;
+}
+
+/* media query orientation */
+
+/* media query dark mode */
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-color: black;
+        --font-color: white;
+    }
+}
