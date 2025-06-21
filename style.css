@@ -1,307 +1,80 @@
-/* basic body design */
+/* fonts */
 
 @font-face {
-    font-family: Ubuntu;
-    src: url(Fonts/Ubuntu-Regular.ttf) format(truetype);
+    font-family: Caviar;
+    src: url(fonts/CaviarDreams_Bold.ttf);
 }
 
-@font-face {
-    font-family: Lora-Bold;
-    src: url(Fonts/Lora-Bold.ttf) format(truetype);
-}
-@font-face {
-    font-family: Lora-Medium;
-    src: url(Fonts/Lora-Medium.ttf) format(truetype);
-}
-@font-face {
-    font-family: Lora-Regular;
-    src: url(Fonts/Lora-Regular.ttf) format(truetype);
+/* variables */
+
+:root {
+    --bar-width: 3rem;
+    --bar-height: 0.25rem;
+    --bar-gap: 0.75rem;
 }
 
-body {
+/* hamburger */
+
+#hamburger {
+    display: flex;
+    flex-direction: column;
+    gap: var(--bar-gap);
+    cursor: pointer;
+    width: var(--bar-width);
+}
+
+#hamburger:before,
+#hamburger:after,
+#hamburger input {
+    content: "";
+    width: var(--bar-width);
+    height: var(--bar-height);
+    background-color: var(--font-color);
+    border-radius: 100vw;
+    transition: 300ms ease-in-out;
+    transform-origin: left center;
+}
+
+#hamburger input {
+    appearance: none;
+    padding: 0;
     margin: 0;
-    font-size: 1.125rem;
-    font-family: Ubuntu, sans-serif;
-    font-weight: 300;
-    background: rgb(223, 223, 223);
-    color: rgb(31, 31, 31);
+    outline: none;
+    pointer-events: none;
 }
 
-@media (prefers-color-scheme: dark) {
-    body {
-        background: rgb(31, 31, 31);
-        color: rgb(223, 223, 223);
-    }
+#hamburger input:checked {
+    opacity: 0;
+    width: 0;
 }
 
-img {
-    width: 100%;
-    display: block;
-    border-radius: 0.5em;
+#hamburger:has(input:checked)::before {
+    rotate: 45deg;
+    width: calc(var(--bar-height) * 3 + var(--bar-gap) * 2 * 1.41421356237);
 }
 
-.image-full {
-    max-height: 300px;
-    width: 100%;
-    object-fit: cover;
-    margin-bottom: 2em;
+#hamburger:has(input:checked)::after {
+    rotate: -45deg;
+    width: calc(var(--bar-height) * 3 + var(--bar-gap) * 2 * 1.41421356237);
 }
 
-/* typography */
+#hamburger:has(input:checked) + #menu {
+    translate: 0;
+}
+
+/* logo */
+
+#logo {
+    border: 2px solid white;
+    border-radius: 100vw;
+    height: 3em;
+}
+
+/* h1 font */
 
 h1 {
-    font-weight: 500;
-    font-family: Lora-Bold, serif;
-    font-size: 2rem;
-    margin: 0;
-    color: rgb(223, 223, 223);
+    font-family: Caviar;
 }
-
-h2 {
-    font-weight: 500;
-    font-family: Lora-Medium, serif;
-    font-size: 1.5rem;
-    margin-top: 0;
-}
-
-h3 {
-    font-weight: 500;
-    font-family: Ubuntu, serif;
-    font-size: 1.25rem;
-    margin-top: 1rem;
-    color: rgb(175, 175, 175);
-}
-
-a {
-    color: rgb(127, 127, 127);
-    font-weight: 700;
-}
-
-strong {
-    font-weight: 700;
-}
-
-a:hover,
-a:focus {
-    color: rgb(191, 127, 63);
-}
-
-.subtitle {
-    font-weight: 700;
-    color: rgb(63, 127, 191);
-    font-size: 0.75rem;
-    margin: 0;
-    text-transform: uppercase;
-}
-
-.article-title {
-    font-size: 1.5rem;
-}
-
-.article-read-more,
-.article-info {
-    font-size: 0.875rem;
-}
-
-.article-read-more {
-    color: rgb(127, 127, 127);
-    text-decoration: none;
-    font-weight: 700;
-}
-
-.article-read-more:hover,
-.article-read-more:focus {
-    color: rgb(191, 127, 63);
-    text-decoration: underline;
-}
-
-.article-info {
-    margin: 2em 0;
-}
-
-strong {
-    color: rgb(63, 127, 191);
-}
-
-/* header layout */
-
-.container {
-    width: 95%;
-    max-width: 960px;
-    margin: 0 auto;
-}
-
-.container-flex {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-header {
-    background-image: linear-gradient(to bottom right, rgb(31, 31, 63), rgb(47, 47, 63), rgb(63, 63, 63));
-    text-align: center;
-    padding: 2em 0;
-    margin-bottom: 3em;
-}
-
-.site-title {
-    margin: auto 0;
-}
-
-/* navigation */
-
-nav ul {
-    list-style: none;
-    padding: 0;
-    margin-bottom: -1em;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-nav li {
-    margin: 1em 2em;
-}
-
-nav a {
-    text-decoration: none;
-    text-transform: uppercase;
-    padding: 0.25em 0;
-}
-
-.current-page {
-    border-bottom: 1px solid;
-}
-
-.current-page:hover,
-.current-page:focus {
-    color: rgb(127, 127, 127);    
-}
-
-/* main layout */
-
-.article-featured {
-    border-bottom: 1px solid rgb(127, 127, 127);
-    padding-bottom: 1em;
-    margin-bottom: 2em;
-}
-
-.article-recent {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 2em;
-}
-
-.article-recent-main {
-    order: 2;
-}
-
-.article-recent-secondary {
-    order: 1;
-}
-
-.article-image {
-    max-height: 250px;
-    object-fit: cover;
-}
-
-.article-body {
-    mask-image: linear-gradient(to bottom, rgb(31, 31, 31) 50%, transparent 100%);
-}
-
-.widget-title {
-    font-size: 1.5rem;
-    font-family: Ubuntu;
-    font-weight: 700;
-}
-
-.widget-body {
-    font-size: 1rem;
-    margin: 2em auto 0;
-}
-
-.widget-recent-post-title {
-    color: rgb(223, 223, 223);
-}
-
-/* aside layout */
-
-.sidebar-widget {
-    border: 2px solid rgb(175, 175, 175);
-    border-radius: 0.5em;
-    margin-bottom: 2em;
-    padding: 1.5em;
-}
-
-.widget-recent-post {
-    display: flex;
-    flex-direction: column;
-    border-bottom: 1px solid rgb(127, 127, 127);
-    margin: 2em auto;
-}
-
-.widget-recent-post:last-child {
-    border: 0;
-    margin: 0;
-}
-
-.widget-image {
-    order: -1;
-}
-
-/* footer layout */
-
-footer {
-    background-image: linear-gradient(to bottom right, rgb(31, 31, 63), rgb(47, 47, 63), rgb(63, 63, 63));
-    color: rgb(223, 223, 223);
-    text-align: center;
-    padding: 3em 0;
-}
-
-.footer-title {
-    color: rgb(223, 223, 223);
-}
-
-/* media queries */
-
-@media (min-width: 675px) {
-    .container-flex {
-        flex-direction: row;
-    }
-    nav ul {
-        margin: auto;
-        flex-direction: row;
-    }
-    nav li {
-        margin: 2em;
-    }
-    main {
-        width: 70%;
-    }
-    .article-recent {
-        flex-direction: row;
-        justify-content: space-between;
-    }
-    .article-recent-main {
-        width: 68%;
-        margin: 0 1.5em;
-    }
-    .article-recent-secondary {
-        width: 30%;
-    }
-    .article-featured {
-        display: flex;
-        flex-direction: column;
-    }
-    .article-image {
-        height: 250px;
-    }
-    aside {
-        width: 25%;
-        min-width: 200px;
-    }
-}
-
 
 /* news ticker */
 
@@ -314,7 +87,7 @@ footer {
 /* first item = 0, fourth item = -300% */
 @keyframes tickerh {
   0% { transform: translatex(100%); }
-  100% { transform: translatex(-50em); }
+  100% { transform: translatex(-100%); }
 }
 .hmove { animation: tickerh linear 20s infinite; }
 .hmove:hover { animation-play-state: paused; }
