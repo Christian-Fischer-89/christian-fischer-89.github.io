@@ -73,7 +73,7 @@
 /* h1 font */
 
 h1 {
-    font-family: Caviar;
+    font-family: Caviar, monospace;
 }
 
 /* news ticker */

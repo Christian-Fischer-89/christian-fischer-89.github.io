@@ -1,0 +1,14 @@
+python
+afo
+excel
+power query
+SAP
+html
+css
+javascript
+C
+Access
+SQL
+Windows
+Linux
+Git
