@@ -11,15 +11,15 @@ document.addEventListener("DOMContentLoaded", async function () {
     loadSections();
 });
 
-//load sections headings and texts 
+//load sections headings, texts and images 
 function loadSections() {
     document.querySelectorAll("section").forEach(async text => {
         var sectionPos = text.id.substring(text.id.indexOf("-") + 1);
         var textData = await fetch("sections/" + sectionPos + ".txt");
         var loadText = await textData.text();
         var section_content = `<h2 id="section-${sectionPos}-heading">${loadText.slice(0, loadText.indexOf("\n"))}</h2>` + `<p id="section-${sectionPos}-text">${loadText.slice(loadText.indexOf("\n") + 1, loadText.length)}</p>`;
-        text.innerHTML = section_content + `<img id="pre-image-${sectionPos}" class="pre-images">`;
-        tryImages(document.getElementById(`pre-image-${sectionPos}`), `sections/images/${sectionPos}`);
+        text.innerHTML = section_content + `<img id="section-image-${sectionPos}" class="section-images">`;
+        tryImages(document.getElementById(`section-image-${sectionPos}`), `sections/images/${sectionPos}`);
     });
 }
 

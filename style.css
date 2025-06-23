@@ -68,6 +68,7 @@
     border: 2px solid white;
     border-radius: 100vw;
     height: 3em;
+    width: auto;
 }
 
 /* h1 font */
