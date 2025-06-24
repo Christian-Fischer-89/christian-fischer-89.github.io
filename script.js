@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     loadSections();
 });
 
-//load sections headings and texts 
+//load sections headings, texts and images 
 function loadSections() {
     document.querySelectorAll("section").forEach(async text => {
         var sectionPos = text.id.substring(text.id.indexOf("-") + 1);
