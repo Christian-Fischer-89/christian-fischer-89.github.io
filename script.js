@@ -7,6 +7,8 @@ document.addEventListener("DOMContentLoaded", async function () {
         section.id = `section-${i}`;
         section.className = "container";
         section.style.backgroundImage = `url("sections/images/${i}.jpg")`;
+        section.style.backgroundRepeat = "no-repeat";
+        section.style.backgroundSize = "100% auto";
         document.querySelector("main").append(section);
     }
     loadSections();
@@ -18,7 +20,7 @@ function loadSections() {
         var sectionPos = text.id.substring(text.id.indexOf("-") + 1);
         var textData = await fetch("sections/" + sectionPos + ".txt");
         var loadText = await textData.text();
-        var section_content = `<h2 id="section-${sectionPos}-heading">${loadText.slice(0, loadText.indexOf("\n"))}</h2>` + `<p id="section-${sectionPos}-text">${loadText.slice(loadText.indexOf("\n") + 1, loadText.length)}</p>`;
+        var section_content = `<h2 id="section-${sectionPos}-heading">${loadText.slice(0, loadText.indexOf("\n"))}</h2>` + `<pre id="section-${sectionPos}-text">${loadText.slice(loadText.indexOf("\n") + 1, loadText.length)}</pre>`;
         text.innerHTML = section_content;
     });
 }

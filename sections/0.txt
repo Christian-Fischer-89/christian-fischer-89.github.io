@@ -1,3 +1,7 @@
 Willkommen!
 
 Danke fürs Vorbeischauen :)
+
+<div><a href="">Fähigkeiten</a></div>
+<div><a href="">Interessen</a></div>
+<div><a href="">Ziele</a></div>

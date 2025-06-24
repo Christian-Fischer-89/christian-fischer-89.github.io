@@ -69,12 +69,21 @@
     border-radius: 100vw;
     height: 3em;
     width: auto;
+    cursor: pointer;
 }
 
 /* h1 font */
 
 h1 {
     font-family: Caviar, monospace;
+    font-size: 2rem;
+    margin: auto;
+}
+
+/* pre elements */
+
+pre div {
+    width: fit-content;
 }
 
 /* news ticker */
