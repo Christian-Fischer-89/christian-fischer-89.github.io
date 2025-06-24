@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         var section = document.createElement("section");
         section.id = `section-${i}`;
         section.className = "container";
+        section.style.backgroundImage = `url("sections/images/${i}.jpg")`;
         document.querySelector("main").append(section);
     }
     loadSections();
@@ -18,8 +19,7 @@ function loadSections() {
         var textData = await fetch("sections/" + sectionPos + ".txt");
         var loadText = await textData.text();
         var section_content = `<h2 id="section-${sectionPos}-heading">${loadText.slice(0, loadText.indexOf("\n"))}</h2>` + `<p id="section-${sectionPos}-text">${loadText.slice(loadText.indexOf("\n") + 1, loadText.length)}</p>`;
-        text.innerHTML = section_content + `<img id="pre-image-${sectionPos}" class="pre-images">`;
-        tryImages(document.getElementById(`pre-image-${sectionPos}`), `sections/images/${sectionPos}`);
+        text.innerHTML = section_content;
     });
 }
 
