@@ -2,7 +2,7 @@
 
 @font-face {
     font-family: Caviar;
-    src: url(fonts/CaviarDreams_Bold.ttf);
+    src: url(Fonts/CaviarDreams_Bold.ttf);
 }
 
 /* variables */
@@ -11,6 +11,8 @@
     --bar-width: 3rem;
     --bar-height: 0.25rem;
     --bar-gap: 0.75rem;
+    --primary-color: hsl(180, 50%, 30%);
+    --secondary-color: hsl(180, 50%, 70%);
 }
 
 /* hamburger */
@@ -77,7 +79,27 @@
 h1 {
     font-family: Caviar, monospace;
     font-size: 2rem;
+    color: var(--font-color);
     margin: auto;
+    text-align: center;
+}
+
+/* anchor tag underlines */
+
+a:after {
+    border-color: var(--secondary-color);
+}
+
+/* sections style */
+
+section {
+    margin-bottom: 2em;
+}
+
+/* section variations */
+
+main section:nth-child(2n) > h2 {
+    order: 2;
 }
 
 /* pre elements */
@@ -101,3 +123,11 @@ pre div {
 }
 .hmove { animation: tickerh linear 20s infinite; }
 .hmove:hover { animation-play-state: paused; }
+
+/* mobile mode */
+
+@media (max-width: 512px) {
+    h1 {
+        font-size: 1.25rem;
+    }
+}
