@@ -98,11 +98,25 @@ section {
 
 /* section variations */
 
-main section:nth-child(2n) > h2 {
+section:nth-child(2n) > h2 {
     order: 2;
 }
 
+section:nth-child(2n) > * {
+    width: fit-content;
+}
+
+/* section children */
+
+section > * {
+    width: 50vw;
+} 
+
 /* pre elements */
+
+pre {
+    white-space: pre-wrap;
+}
 
 pre div {
     width: fit-content;
