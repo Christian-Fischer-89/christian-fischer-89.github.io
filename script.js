@@ -7,8 +7,6 @@ document.addEventListener("DOMContentLoaded", async function () {
         section.id = `section-${i}`;
         section.className = "container";
         section.style.backgroundImage = `url("sections/images/${i}.jpg")`;
-        section.style.backgroundRepeat = "no-repeat";
-        section.style.backgroundSize = "100% auto";
         document.querySelector("main").append(section);
     }
     loadSections();
@@ -18,10 +16,24 @@ document.addEventListener("DOMContentLoaded", async function () {
 function loadSections() {
     document.querySelectorAll("section").forEach(async text => {
         var sectionPos = text.id.substring(text.id.indexOf("-") + 1);
+        var section_heading_div = document.createElement("div");
+        section_heading_div.className = "section-heading-div";
+        text.append(section_heading_div);
+        var section_text_div = document.createElement("div");
+        section_text_div.className = "section-text-div";
+        text.append(section_text_div);
+        var section_heading = document.createElement("h2");
+        section_heading.id = `section-${sectionPos}-heading`;
+        section_heading_div.append(section_heading);
+        var section_text = document.createElement("pre");
+        section_text.id = `section-${sectionPos}-text`;
+        section_text_div.append(section_text);
         var textData = await fetch("sections/" + sectionPos + ".txt");
         var loadText = await textData.text();
-        var section_content = `<h2 id="section-${sectionPos}-heading">${loadText.slice(0, loadText.indexOf("\n"))}</h2>` + `<pre id="section-${sectionPos}-text">${loadText.slice(loadText.indexOf("\n") + 1, loadText.length)}</pre>`;
-        text.innerHTML = section_content;
+        var section_heading_content = loadText.slice(0, loadText.indexOf("\n"));
+        section_heading.innerHTML = section_heading_content;
+        var section_text_content = loadText.slice(loadText.indexOf("\n") + 1, loadText.length);
+        section_text.innerHTML = section_text_content;
     });
 }
 
