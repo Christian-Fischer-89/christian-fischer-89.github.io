@@ -223,9 +223,9 @@
     /* media query mobile */
 
     @media (width < 1023px) {
-    .container {
-        flex-direction: column;
-    }
+        .container {
+            flex-direction: column;
+        }
     }
 
     /* media query orientation */

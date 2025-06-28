@@ -141,7 +141,7 @@ pre {
 
 /* mobile mode */
 
-@media (max-width: 512px) {
+@media (max-width: 1023px) {
     h1 {
         font-size: 1.25rem;
     }
